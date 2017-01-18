@@ -2,51 +2,57 @@ require './card'
 
 class Deck
 
-  @deck_list = []
-  
-  def initialize(deck_type, size)
-    @size = size
-    @type = deck_type
+  attr_reader :size, :type, :deck_list
 
+  def initialize(deck_type='standard', size=52)
+    @deck_list = Array.new
+    self.type = deck_type
+    self.size = size
+    build
+  end
+
+  def size=(size) #must throw error if 'standard' type and size % 52 != 0
     if @type == 'standard'
-      build_card_deck
-    elsif @type == 'token'
-      build_token_deck
-    end
-
-  end
-
-  def get_size
-    @size
-  end
-
-  def get_type
-    @type
-  end
-
-  def build_token_deck
-    for i in 1..get_size
-      token = Token.new
-      @deck_list.push(token)
+      if size % 52 == 0
+        @size = size
+      else
+        raise ArgumentError, "'standard' size must be multiple of 52"
+      end
+    else
+      @size = size
     end
   end
 
-  def build_card_deck
-    suits = %w(heart diamond spade club)
-    ranks = %w(two three four five six seven eight nine ten jack queen king ace)
+  def type=(type)
+    if type == 'standard' || type == 'token'
+      @type = type
+    else
+      raise ArgumentError, "type must be either 'standard' or 'token'."
+    end
+  end
 
-    suits.each { |suit|
-      ranks.each { |rank|
-        card = Card.new suit, rank
-        @deck_list.push(card)
-      }
-    }
+  def build
+    if @type == 'token'
+      @size.times do
+        token = Token.new
+        @deck_list.push token
+      end
+    else
+      num_decks = @size.to_i / 52
+      suits = %w(heart diamond club spade)
+      ranks = %w(two three four five six seven eight nine ten jack queen king ace)
+      (num_decks).times do
+        suits.each { |suit|
+          ranks.each { |rank|
+            card = Card.new(rank, suit)
+            @deck_list.push card
+          }
+        }
+      end
+    end
   end
 
   def count_deck
     @deck_list.count
   end
-
-
-
 end
