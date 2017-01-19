@@ -45,13 +45,20 @@ describe 'Player' do
 
   describe 'view_hand' do
 
+    let(:deck) {Deck.new 'standard', 52}
+    let(:player) {Player.new 1}
+
     it "should return 'empty' if the hand is empty" do
-      player = Player.new(1)
       expect(player.view_hand).to eq('empty')
     end
 
     # can't get test to work to check whether or not the view_hand method
     # is printing formatted contents of the hand array :(
+
+    it "should return formatted contents of the hand array" do
+      player.draw(deck, 3)
+      expect{ player.view_hand }.to output("ace of spades\nking of spades\nqueen of spades\n").to_stdout
+    end
 
   end
 

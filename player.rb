@@ -26,7 +26,7 @@ class Player
       'empty'
     else
       (@hand.length).times do |i|
-        puts "#{@hand[i].print}"
+        puts "#{hand[i].print}"
       end
     end
   end
