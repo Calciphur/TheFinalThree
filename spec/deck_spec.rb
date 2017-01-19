@@ -41,4 +41,21 @@ describe "Deck" do
       expect{deck.type = 'tokens'}.to raise_error(ArgumentError)
     end
   end
+
+  describe "print" do
+    it "should print the formatted contents of the deck_list array" do
+      deck = Deck.new 'token', 10
+      c_deck = Deck.new 'standard', 52
+      expect(deck.print).to eq(
+        for i in 0..9
+          p "#{deck.deck_list[i]}\n"
+        end
+      )
+      expect(c_deck.print).to eq(
+        for i in 0..51
+          p "#{c_deck.deck_list[i]}\n"
+        end
+      )
+    end
+  end
 end

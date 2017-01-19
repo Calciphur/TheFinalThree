@@ -33,8 +33,8 @@ class Deck
 
   def build
     if @type == 'token'
-      @size.times do
-        token = Token.new
+      for i in 1..@size
+        token = Token.new(i)
         @deck_list.push token
       end
     else
@@ -54,5 +54,12 @@ class Deck
 
   def count_deck
     @deck_list.count
+  end
+
+  def print
+    count_max = self.count_deck - 1
+    for i in 0..count_max
+      p "#{@deck_list[i].print}"
+    end
   end
 end

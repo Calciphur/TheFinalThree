@@ -1,13 +1,16 @@
 class Token
-  @@token_count = 0
+  attr_reader :id
 
-  def initialize
-    @@token_count += 1
-    @id = @@token_count
-
+  def initialize(id)
+    self.id = id
   end
 
   def print
     "Token: #{@id}"
   end
+
+  def id=(id)
+    @id = id
+  end
+
 end
