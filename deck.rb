@@ -33,7 +33,7 @@ class Deck
 
   def build
     if @type == 'token'
-      for i in 1..@size
+      (1..@size).each do |i|
         token = Token.new(i)
         @deck_list.push token
       end

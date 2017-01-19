@@ -40,6 +40,7 @@ describe 'Player' do
       expect(player.hand.length).to eq(2)
       expect(deck.count_deck).to eq(50)
     end
+
   end
 
   describe 'view_hand' do
@@ -52,5 +53,12 @@ describe 'Player' do
     # can't get test to work to check whether or not the view_hand method
     # is printing formatted contents of the hand array :(
 
+  end
+
+  describe 'id' do
+    it "should set the @id of the player when passed a valid id" do
+      player = Player.new(1)
+      expect(player.id).to eq(1)
+    end
   end
 end

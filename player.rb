@@ -2,10 +2,11 @@ require './card'
 
 class Player
 
-  attr_reader :hand
+  attr_reader :hand, :id
 
   def initialize(id)
     @hand = Array.new
+    self.id = id
   end
 
   def draw(deck, num)
@@ -27,6 +28,16 @@ class Player
       (@hand.length).times do |i|
         puts "#{@hand[i].print}"
       end
+    end
+  end
+
+  private
+
+  def id=(id)
+    if id.is_a? Integer
+      @id = id
+    else
+      raise ArgumentError, "id must be an integer"
     end
   end
 end
