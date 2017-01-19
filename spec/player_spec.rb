@@ -20,6 +20,17 @@ describe 'Player' do
       player.draw(deck, 3)
       expect(deck.count_deck).to eq(49)
     end
+  end
 
+  describe 'view_hand' do
+
+    it "should return 'empty' if the hand is empty" do
+      player = Player.new(1)
+      expect(player.view_hand).to eq('empty')
+    end
+
+    # can't get test to work to check whether or not the view_hand method
+    # is printing formatted contents of the hand array :(
+    
   end
 end
