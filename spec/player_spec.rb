@@ -1,10 +1,13 @@
 require 'spec_helper'
 
 describe 'Player' do
+
   describe 'draw' do
+
+    let(:deck) {Deck.new 'standard', 52}
+    let(:player) {Player.new 1}
+
     it "should add the last three cards in the deck to the hand array" do
-      deck = Deck.new 'standard', 52
-      player = Player.new(1)
       player.draw(deck, 3)
       expect(player.hand[1].print).to eq(
         "king of spades"
@@ -15,17 +18,17 @@ describe 'Player' do
     end
 
     it "should remove the last three cards from the deck_list array" do
-      deck = Deck.new 'standard', 52
-      player = Player.new(1)
       player.draw(deck, 3)
       expect(deck.count_deck).to eq(49)
     end
   end
 
   describe 'insert_hand' do
+
+    let(:player) {Player.new 1}
+    let(:deck) {Deck.new 'standard', 52}
+
     it "should remove all cards from 'hand' when no num param passed" do
-      player = Player.new(1)
-      deck = Deck.new 'standard', 52
       player.draw(deck, 3)
       player.insert_hand(deck)
       expect(player.hand.length).to eq(0)
@@ -33,8 +36,6 @@ describe 'Player' do
     end
 
     it "should remove specified # cards from hand when num param passed" do
-      player = Player.new(1)
-      deck = Deck.new 'standard', 52
       player.draw(deck, 3)
       player.insert_hand(deck, 1)
       expect(player.hand.length).to eq(2)
@@ -52,9 +53,6 @@ describe 'Player' do
       expect(player.view_hand).to eq('empty')
     end
 
-    # can't get test to work to check whether or not the view_hand method
-    # is printing formatted contents of the hand array :(
-
     it "should return formatted contents of the hand array" do
       player.draw(deck, 3)
       expect{ player.view_hand }.to output("ace of spades\nking of spades\nqueen of spades\n").to_stdout
@@ -63,8 +61,10 @@ describe 'Player' do
   end
 
   describe 'id' do
+
+    let(:player) {Player.new 1}
+    
     it "should set the @id of the player when passed a valid id" do
-      player = Player.new(1)
       expect(player.id).to eq(1)
     end
   end
