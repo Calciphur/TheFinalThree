@@ -1,5 +1,5 @@
 require './card'
-
+require './modules/CardModule'
 class Deck
 
   attr_reader :size, :type, :deck_list
@@ -39,8 +39,8 @@ class Deck
       end
     else
       num_decks = @size.to_i / 52
-      suits = %w(heart diamond club spade)
-      ranks = %w(two three four five six seven eight nine ten jack queen king ace)
+      suits = CardModule::SUITS
+      ranks = CardModule::RANKS
       (num_decks).times do
         suits.each { |suit|
           ranks.each { |rank|

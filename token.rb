@@ -9,8 +9,14 @@ class Token
     "Token: #{@id}"
   end
 
+  private
+
   def id=(id)
-    @id = id
+    if id.is_a? Integer
+      @id = id
+    else
+      raise ArgumentError, "id must be an integer"
+    end
   end
 
 end
