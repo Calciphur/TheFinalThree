@@ -4,7 +4,7 @@ class Deck
 
   attr_reader :size, :type, :deck_list
 
-  def initialize(deck_type='standard', size=52)
+  def initialize(deck_type, size)
     @deck_list = Array.new
     self.type = deck_type
     self.size = size
@@ -29,6 +29,11 @@ class Deck
     else
       raise ArgumentError, "type must be either 'standard' or 'token'."
     end
+  end
+
+  def deck_list=(card_array)
+    @deck_list = card_array
+    @size = card_array.size
   end
 
   def build

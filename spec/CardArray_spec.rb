@@ -24,3 +24,12 @@ describe "split_shuffle" do
 
 
 end
+
+describe "count_remainder" do
+  let(:card_array) {(1..52).to_a}
+
+  it "should return 3 if card_array.size == 52" do
+    expect(CardArray.count_remainder card_array).to eq(3)
+  end
+  
+end
