@@ -26,8 +26,8 @@ describe "split_shuffle" do
 end
 
 describe "count_remainder" do
-  let(:card_array) {(1..52).to_a}
-  let(:card_array2) {(1..16).to_a}
+  let(:card_array) {52}
+  let(:card_array2) {16}
 
   it "should return 3 if card_array.size == 52" do
     expect(CardArray.count_remainder card_array).to eq(3)

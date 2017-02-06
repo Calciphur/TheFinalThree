@@ -5,11 +5,12 @@ module CardArray
   end
 
   def CardArray.count_remainder a
-    until a.size <= 3 do
-      a = CardArray.split_shuffle a
-      a = a.reverse
+    arr = (1..a).to_a
+    until arr.size <= 3 do
+      arr = CardArray.split_shuffle arr
+      arr = arr.reverse
     end
-    return a.size
+    return arr.size
   end
 
 end

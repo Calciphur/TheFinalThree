@@ -1,4 +1,6 @@
 require './modules/CardArray'
+require './player'
+require './deck'
 
 class Game
 
