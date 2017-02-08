@@ -13,4 +13,13 @@ module CardArray
     return arr.size
   end
 
+  def CardArray.find_safe_positions deck_count
+    arr = (1..deck_count).to_a
+    until arr.size <= 3 do
+      arr = CardArray.split_shuffle arr
+      arr = arr.reverse
+    end
+    return arr.sort
+  end
+
 end

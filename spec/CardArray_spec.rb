@@ -38,3 +38,17 @@ describe "count_remainder" do
   end
 
 end
+
+describe "find_safe_positions" do
+  let(:deck_size) {52}
+  let(:deck_size2) {9}
+
+  it "should return 6, 22, 38 as an array if passed 52" do
+    expect(CardArray.find_safe_positions deck_size).to eq([6,22,38])
+  end
+
+  it "should return 2, 6 as an array if passed 9" do
+    expect(CardArray.find_safe_positions deck_size2).to eq([2,6])
+  end
+
+end
