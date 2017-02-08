@@ -7,7 +7,7 @@ class Lab
   attr_reader :rows, :table, :fields, :headers
 
   def initialize
-    @headers = ["Base-10 Value", "Remainder", "Base-4 Value"]
+    @headers = ["Base-10", "Remainder", "Safe_Pos", "Base-4"]
   end
 
   def create_data num_sets
@@ -23,8 +23,9 @@ class Lab
           #then pass the actual data
           row = Array.new
           remainder = CardArray.count_remainder i
+          safe = CardArray.find_safe_positions i
           base_four_num = BaseMath.to_quat i
-          @fields = [i, remainder, base_four_num]
+          @fields = [i, remainder, safe, base_four_num]
           csv << @fields
 
         end
