@@ -22,4 +22,21 @@ module CardArray
     return arr.sort
   end
 
+  def CardArray.sort_remainders up_to
+    rem2 = Array.new
+    rem3 = Array.new
+    rems = [rem2, rem3]
+
+    (1..up_to).each do |i|
+      remainder = CardArray.count_remainder i
+      case remainder
+      when 2
+        rem2.push(i)
+      when 3
+        rem3.push(i)
+      end
+    end
+    return rems
+  end
+
 end

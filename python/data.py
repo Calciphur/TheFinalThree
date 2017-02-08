@@ -6,6 +6,7 @@ class Data:
     #csvFile should point to the data.csv file, but can be changed.
     def __init__(self, csv='../files/data.csv'):
         self.csvFile = csv
+        self.getData()
 
     def getData(self):
         with open(self.csvFile) as f:

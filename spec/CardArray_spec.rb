@@ -52,3 +52,15 @@ describe "find_safe_positions" do
   end
 
 end
+
+describe "sort_remainders" do
+
+  it "should sort remainders for 16 correctly" do
+    expect(CardArray.sort_remainders 16).to eq([[2,4,5,8,9,10,11,16], [3,6,7,12,13,14,15]])
+  end
+
+  it "should sort remainders for 11 correctly" do
+    expect(CardArray.sort_remainders 11).to eq([[2,4,5,8,9,10,11],[3,6,7]])
+  end
+
+end
