@@ -9,8 +9,6 @@ class Data:
 
     def getData(self):
         with open(self.csvFile) as f:
-            data = [{k: int(v) for k, v in row.items()}
+            data = [{k: str(v) for k, v in row.items()}
                 for row in csv.DictReader(f, skipinitialspace=True)]
         self.dataList = data
-
-    
