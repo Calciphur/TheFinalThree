@@ -40,7 +40,7 @@ class Game
     reduction_deck = @deck.deck_list
 
     #begin three remain deck reduction
-    puts "Initial deck size: #{deck}"
+    puts "Initial deck size: #{deck.deck_list.size}"
     until reduction_deck.size <= 3 do
       reduction_deck = CardArray.split_shuffle reduction_deck
       reduction_deck.each do |token|
