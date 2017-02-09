@@ -11,8 +11,12 @@ class Lab
   end
 
   def create_data num_sets
+
     #make sure num_sets is an integer
     if num_sets.is_a? Integer
+      #when creating a new dataset, delete the contents of the file beforehand
+      CSV.open("./files/data.csv", "w") {}
+      #begin writing to blank csv
       CSV.open("./files/data.csv", "wb") do |csv|
         (0..num_sets).each do |i|
 
