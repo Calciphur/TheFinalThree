@@ -7,7 +7,7 @@ class Lab
   attr_reader :rows, :table, :fields, :headers
 
   def initialize
-    @headers = ["Base-10", "Remainder", "Safe_Pos", "Base-4"]
+    @headers = ["b10", "remainder", "safe_pos", "b4"]
   end
 
   def create_data num_sets
